@@ -10,7 +10,14 @@ const links = [
 
 export default function Navbar() {
   return (
-    <nav style={{ display: "flex", gap: "1.5rem", padding: "1rem 2rem" }}>
+    <nav style={{
+      display: "flex", gap: "2rem",
+      padding: "1.2rem 2rem",
+      borderBottom: "1px solid var(--border)",
+      background: "var(--bg)",
+      position: "sticky", top: 0, zIndex: 100,
+      backdropFilter: "blur(10px)"
+    }}>
       {links.map(({ to, label }) => (
         <NavLink
           key={to}
@@ -18,7 +25,10 @@ export default function Navbar() {
           end
           style={({ isActive }) => ({
             fontWeight: isActive ? "700" : "400",
-            textDecoration: "none",
+            color: isActive ? "var(--accent)" : "var(--text-muted)",
+            fontSize: "0.95rem",
+            letterSpacing: 0.5,
+            transition: "color 0.2s"
           })}
         >
           {label}
