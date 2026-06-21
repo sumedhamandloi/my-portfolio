@@ -1,6 +1,8 @@
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
+import GlowCursor from "./components/GlowCursor";
+import AmbientBackground from "./components/AmbientBackground";
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
@@ -26,8 +28,12 @@ function AnimatedRoutes() {
 export default function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <AnimatedRoutes />
+      <GlowCursor />
+      <AmbientBackground />
+      <div style={{ position: "relative", zIndex: 1 }}>
+        <Navbar />
+        <AnimatedRoutes />
+      </div>
     </BrowserRouter>
   );
 }
