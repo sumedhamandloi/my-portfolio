@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import QuoteCarousel from "../components/QuoteCarousel.jsx";
 
 import myPhoto from "../assets/sumedha-mandloi.jpg";
+import WhatIDo from "../components/WhatIDo.jsx";
 
 const roles = ["UI/UX Designer", "AI Enthusiast", "Web Developer", "Problem Solver"];
 
@@ -180,8 +181,9 @@ export default function Home() {
             <Typewriter words={roles} />
           </h2>
           <p style={{ maxWidth: 480, lineHeight: 1.9, color: "var(--text-muted)", marginBottom: "2.5rem", fontSize: "1rem" }}>
-            IT undergrad at IIPS, DAVV, Indore. Always building something new —
-            whether it's an ML model or a clean UI. Let's talk tech over coffee.
+            IT undergrad at IIPS, DAVV, Indore. I believe in making impact and solving problems efficiently, leveraging
+            development skills, design thinking, and a genuine curiosity for AI.
+            <p>Always building something new - whether it's an ML model or a clean UI. Let's talk tech over coffee.</p>
           </p>
           <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
             <Link to="/projects">
@@ -231,70 +233,65 @@ export default function Home() {
           </div>
         </motion.div>
       </motion.section>
-
+      
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, margin: "-80px" }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <WhatIDo />
+      </motion.div>
+      
       {/* ── Origin Story ── */}
       <Section label="How I got here">
         <h2 style={{ fontSize: "clamp(1.6rem, 4vw, 2.4rem)", fontWeight: 700, marginBottom: "1.8rem", lineHeight: 1.2 }}>
           A font story changed<br />everything.
         </h2>
         <div style={{ maxWidth: 620, color: "var(--text-muted)", lineHeight: 2, fontSize: "1rem", display: "flex", flexDirection: "column", gap: "1.2rem" }}>
-          <p>Before I knew what UI/UX was, I stumbled on Steve Jobs' Stanford speech. He talked about dropping into a calligraphy class after dropping out of Reed College — with no practical application in sight. He just thought it was beautiful. Ten years later, every one of those letterforms showed up in the Macintosh.</p>
-          <p>That was the moment I stopped thinking about tech as just logic and started seeing it as craft. Design wasn't decoration — it was the difference between something people use and something people <em style={{ color: "var(--text)" }}>love</em>.</p>
-          <p>I didn't know it then, but that was my dot. KrishiMitra, Edufolio, Capscout — each one connected back to that moment of realizing that the best technology doesn't just function, it <em style={{ color: "var(--text)" }}>feels</em>.</p>
+          <p>Before I knew what UI/UX was, I stumbled on Steve Jobs' Stanford speech. He talked about dropping into a calligraphy class after dropping out of Reed College, with no practical application in sight. He just thought it was beautiful. Ten years later, every one of those letterforms showed up in the Macintosh.</p>
+          <p>That was the moment I stopped thinking about tech as just logic and started seeing it as craft. Design wasn't decoration, it was the difference between something people use and something people <em style={{ color: "var(--text)" }}>love</em>.</p>
+          <p>I didn't know it then, but that was my dot. I've been drawn to tech to build similar <em style={{ color: "var(--text)" }}>experiences</em>.</p>
         </div>
       </Section>
 
       {/* ── Quotes — handled entirely by QuoteCarousel component ── */}
       <QuoteCarousel />
 
-      {/* ── About ── */}
-      <Section label="About">
-        <p style={{ fontSize: "1.1rem", lineHeight: 2, maxWidth: 620, color: "var(--text-muted)" }}>
-          I believe in making impact and solving problems efficiently — leveraging
-          development skills, design thinking, and a genuine curiosity for AI.
-          Always up for a new project or a conversation about tech.
-        </p>
-      </Section>
-
-      {/* ── Featured Projects ── */}
+{/* ── Featured Projects ── */}
       <Section label="Featured Projects">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: "1.4rem" }}>
           {featuredProjects.map((p, i) => <ProjectCard key={p.title} p={p} i={i} />)}
         </div>
-        <div style={{ marginTop: "1.8rem" }}>
-          <Link to="/projects">
-            <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
+        
+        <div style={{ marginTop: "2.5rem" }}>
+          <Link to="/projects" style={{ textDecoration: "none" }}>
+            <motion.button 
+              whileHover={{ 
+                scale: 1.03,
+                borderColor: "var(--accent)",
+                color: "var(--accent)",
+                boxShadow: "0 0 20px var(--accent)33"
+              }} 
+              whileTap={{ scale: 0.97 }}
               style={{
-                padding: "0.65rem 1.6rem", background: "transparent",
-                border: "1px solid var(--border)", color: "var(--text-muted)",
-                borderRadius: 8, fontSize: "0.88rem",
-                cursor: "pointer", fontFamily: "inherit",
+                padding: "0.75rem 1.8rem", 
+                background: "rgba(255, 255, 255, 0.03)", /* Very subtle glassy base */
+                backdropFilter: "blur(8px)",
+                border: "1px solid var(--border)", 
+                color: "var(--text)", /* Brighter default text */
+                borderRadius: 999, /* Pill shape to match tags */
+                fontSize: "0.88rem",
+                fontWeight: 600,
+                cursor: "pointer", 
+                fontFamily: "inherit",
+                transition: "all 0.3s ease",
               }}>
               View all projects →
             </motion.button>
           </Link>
         </div>
       </Section>
-
-      {/* ── Theme toggle ── */}
-      <motion.button
-        onClick={() => {
-          const b = document.body;
-          b.classList.contains("theme-dark")
-            ? b.classList.replace("theme-dark", "theme-light")
-            : b.classList.replace("theme-light", "theme-dark");
-        }}
-        whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}
-        style={{
-          position: "fixed", bottom: "5.5rem", right: "2rem",
-          width: 44, height: 44, borderRadius: "50%",
-          background: "var(--bg-card)", border: "1px solid var(--border)",
-          fontSize: "1.2rem", display: "flex", alignItems: "center", justifyContent: "center",
-          boxShadow: "0 4px 20px rgba(0,0,0,0.3)", cursor: "pointer", zIndex: 100,
-        }}>
-        🌙
-      </motion.button>
-
     </div>
   );
 }

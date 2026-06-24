@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import Navbar from "./components/Navbar";
@@ -9,11 +10,14 @@ import Skills from "./pages/Skills";
 import Blogs from "./pages/Blogs";
 import Contact from "./pages/Contact";
 import PageTransition from "./components/PageTransition";
+import Loader from "./components/Loader.jsx";
 
 function AnimatedRoutes() {
   const location = useLocation();
+  const [loading, setLoading] = useState(true);
   return (
     <AnimatePresence mode="wait">
+      {loading && <Loader onComplete={() => setLoading(false)} />}
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<PageTransition><Home /></PageTransition>} />
         <Route path="/projects" element={<PageTransition><Projects /></PageTransition>} />

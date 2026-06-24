@@ -5,46 +5,46 @@ const categories = [
   {
     name: "Languages",
     icon: "{ }",
-    skills: ["Python", "JavaScript", "TypeScript", "C", "C++", "Kotlin", "Bash"],
-    x: 20, y: 8, baseSize: 150,
+    skills: ["Python", "JavaScript", "TypeScript", "C", "C++"],
+    x: 20, y: 8, baseSize: 170,
   },
   {
     name: "Web Dev",
     icon: "</>",
-    skills: ["React", "Next.js", "Node.js", "Django", "FastAPI", "Flask", "Tailwind", "Bootstrap"],
-    x: 52, y: 3, baseSize: 165,
+    skills: ["React", "Next.js", "Streamlit", "Django", "FastAPI", "Flask", "Tailwind", "Bootstrap"],
+    x: 52, y: -10, baseSize: 190,
   },
   {
     name: "AI / ML",
     icon: "🤖",
-    skills: ["TensorFlow", "PyTorch", "Scikit-learn", "OpenCV", "NumPy", "Pandas", "Jupyter"],
-    x: 36, y: 32, baseSize: 175,
+    skills: ["NumPy", "Pandas", "Scikit-learn", "OpenCV", "Jupyter"],
+    x: 40, y: 32, baseSize: 210,
   },
   {
     name: "Blockchain",
     icon: "⛓",
-    skills: ["Solidity", "Web3.js", "Ethereum", "IPFS", "MetaMask"],
-    x: 64, y: 26, baseSize: 145,
+    skills: ["Solidity", "Web3.js", "Ethereum", "Blockchain Fundamentals"],
+    x: 70, y: 20, baseSize: 180,
   },
   {
     name: "UI / UX",
     icon: "✦",
-    skills: ["Figma", "Photoshop", "Postman"],
-    x: 18, y: 54, baseSize: 130,
+    skills: ["Figma", "Photoshop", "Canva"],
+    x: 18, y: 70, baseSize: 200,
   },
   {
     name: "Tools",
     icon: "⚙",
-    skills: ["Git", "GitHub", "Docker", "AWS", "Azure", "Linux", "VS Code", "Vercel"],
-    x: 55, y: 55, baseSize: 160,
+    skills: ["Git", "GitHub", "Docker", "Linux", "VS Code", "Vercel"],
+    x: 60, y: 60, baseSize: 180,
   },
 ];
 
 const decorBubbles = [
-  { x: 80, y: 8,  size: 52 },
-  { x: 76, y: 50, size: 44 },
-  { x: 38, y: 72, size: 36 },
-  { x: 8,  y: 35, size: 34 },
+  { x: 80, y: 8,  size: 80 },
+  { x: 76, y: 50, size: 65 },
+  { x: 38, y: 72, size: 55 },
+  { x: 8,  y: 35, size: 50 },
 ];
 
 const floatConfigs = [
@@ -123,6 +123,7 @@ function BubbleVisuals({ size }) {
           rgba(255,255,255,0.12) 50%,
           transparent 70%)`,
         transform: "rotate(-25deg)", pointerEvents: "none",
+        opacity: 0.3,
       }} />
       {/* bright dot */}
       <div style={{
@@ -173,16 +174,7 @@ function CategoryBubble({ cat, index, activeIndex, onHover, onLeave }) {
         zIndex: isActive ? 10 : 1,
       }}
     >
-      {/*
-        THE FIX FOR BOTTOM-RIGHT EXPANSION:
-
-        We use `scale` to grow the bubble instead of animating width/height.
-        Scale always transforms from the element's own centre (transform-origin: 50% 50%)
-        so the bubble expands outward equally in all directions.
-
-        The element is always the expanded size; when collapsed we just scale it down.
-        This means no layout shift, no offset math, just pure CSS scale.
-      */}
+      
       <motion.div
         animate={{ scale: isActive ? 1 : base / expanded }}
         transition={expandTransition}

@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 
 const links = [
   { to: "/", icon: "ti-home", label: "Home" },
-  { to: "/projects", icon: "ti-briefcase", label: "Projects" },
   { to: "/skills", icon: "ti-bulb", label: "Skills" },
+  { to: "/projects", icon: "ti-briefcase", label: "Projects" },
   { to: "/blogs", icon: "ti-pencil", label: "Blogs" },
   { to: "/contact", icon: "ti-mail", label: "Contact" },
 ];

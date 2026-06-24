@@ -71,3 +71,69 @@ a { color: inherit; text-decoration: none; }
 nav, nav * {
   cursor: pointer !important;
 }
+
+/* ── PURE CSS FIX: Hijacking React Inline Styles ── */
+
+/* 1. Target and override the main glassy body */
+div[style*="circle at 38% 35%"] {
+  background: radial-gradient(
+    150% 150% at 30% 30%, 
+    rgba(255, 255, 255, 0.01) 0%, 
+    rgba(255, 255, 255, 0.02) 100%
+  ) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 
+    inset 0 0 20px rgba(192, 132, 252, 0.5),   
+    inset 12px 0 40px rgba(0, 180, 255, 0.5),  
+    inset -12px 0 30px rgba(255, 110, 180, 0.4),
+    0 8px 32px rgba(0, 0, 0, 0.2) !important;   
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* 2. Target and reshape the specular crescent light */
+div[style*="ellipse at 40% 40%"] {
+  background: radial-gradient(
+    ellipse at top, 
+    rgba(255, 252, 252, 0.082) 0%, 
+    rgba(221, 189, 189, 0) 60%
+  ) !important;
+  top: 5% !important;
+  left: 15% !important;
+  width: 70% !important;
+  height: 30% !important;
+  transform: rotate(-15deg) !important;
+  z-index: 10 !important;
+  opacity: 0.1;
+}
+
+/* 3. Hide the old bright dot entirely */
+div[style*="blur(2px)"] {
+  display: none !important;
+}
+
+/* 4. Hide the old bottom-right depth shadow */
+div[style*="circle at 68% 72%"] {
+  display: none !important;
+}
+
+/* 5. Hide the SVG glowing rim to prevent color clashes */
+svg[style*="overflow: visible"] {
+  display: none !important;
+}
+
+/* ── Glassmorphism Panels (for Cards) ── */
+.glass-panel {
+  background: radial-gradient(
+    150% 150% at 30% 30%, 
+    rgba(255, 255, 255, 0.01) 0%, 
+    rgba(255, 255, 255, 0.02) 100%
+  ) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  box-shadow: 
+    inset 0 0 20px rgba(192, 132, 252, 0.15),   
+    inset 12px 0 40px rgba(0, 180, 255, 0.15),  
+    0 8px 32px rgba(0, 0, 0, 0.2) !important;   
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}

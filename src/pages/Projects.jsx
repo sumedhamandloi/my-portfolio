@@ -103,13 +103,13 @@ function ProjectCard({ project, index }) {
     <motion.div
       layout
       initial={{ opacity: 0, y: 24 }}
+      className = "glass-panel"
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.35, delay: index * 0.07 }}
       onHoverStart={() => setHovered(true)}
       onHoverEnd={() => setHovered(false)}
       style={{
-        background: "var(--bg-card)",
         border: `1px solid ${hovered ? "var(--accent)" : "var(--border)"}`,
         borderRadius: 16,
         padding: "1.75rem",
